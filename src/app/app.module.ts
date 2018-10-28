@@ -19,6 +19,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
+import { ReportComponent } from './report/report.component';
+
 
 
 
@@ -31,7 +33,8 @@ import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
     VehicleComponent,
     RentComponent,
     ClientComponent,
-    ReservComponent
+    ReservComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
@@ -47,8 +50,7 @@ import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule
-
-
+  
   ],
   providers: [RestService],
   bootstrap: [AppComponent]

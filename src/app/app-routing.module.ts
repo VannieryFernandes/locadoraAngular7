@@ -5,6 +5,7 @@ import { VehicleComponent} from './vehicle/vehicle.component';
 import { RentComponent} from './rent/rent.component';
 import { ClientComponent} from './client/client.component';
 import { ReservComponent} from './reserv/reserv.component';
+import { ReportComponent} from './report/report.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
 
 	{path: 'rent' , component: RentComponent},
 	{path: 'client' , component: ClientComponent},
-	{path: 'reserv' , component: ReservComponent}
+	{path: 'reserv' , component: ReservComponent},
+	{path: 'report' , component: ReportComponent}
 ];
 
 @NgModule({
