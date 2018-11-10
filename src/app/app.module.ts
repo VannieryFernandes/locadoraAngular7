@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule,MatDialogModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 
@@ -20,8 +20,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule }         from '@angular/forms';
 import { ReportComponent } from './report/report.component';
-
-
+import { VehicleModalComponent } from './vehicle-modal/vehicle-modal.component';
 
 
 
@@ -34,7 +33,8 @@ import { ReportComponent } from './report/report.component';
     RentComponent,
     ClientComponent,
     ReservComponent,
-    ReportComponent
+    ReportComponent,
+    VehicleModalComponent
   ],
   imports: [
     BrowserModule,
@@ -49,8 +49,14 @@ import { ReportComponent } from './report/report.component';
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
+    
   
+  
+  ],
+  entryComponents: [
+      VehicleModalComponent,
   ],
   providers: [RestService],
   bootstrap: [AppComponent]

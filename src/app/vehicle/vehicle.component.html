@@ -1,40 +1,9 @@
-<div class="container">
-		
-	  <form [formGroup]="myGroup" (ngSubmit)="onSubmit()">
-      <div>
-	    <label for="InputPlaca">Placa do veículo</label>
 
-	    <input type="text" class="form-control" id="placa" aria-describedby="placa" placeholder="Enter placa" formControlName="placa">
-	   
-	  
-	   	
-	  <label for="InputCor">Cor do veículo</label>
-
-	    <input type="text" class="form-control" id="cor" aria-describedby="cor" placeholder="Enter cor" formControlName="cor" >
-	   
-
-	  
-    <label for="exampleFormControlSelect1">Disponibilidade</label>
-    <select class="form-control" id="disponivel" formControlName="disponivel">
-      <option>1</option>
-      <option>0</option>
-     
-    </select>
-    <small>selecione 0 para disponivel e 1 para indisponivel</small>
-     
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</div>
 	 
-	 
-	
-
-
+	 <button style="margin-left: 50%" mat-fab color="primary" (click)="openDialog()">ADC</button>
 
 
 <!-- ---------------------------------------------------------------------------- -->
-
 
 
 
@@ -67,7 +36,7 @@
   <ng-container matColumnDef="ações">
     <th mat-header-cell *matHeaderCellDef> Ações</th>
     <td mat-cell *matCellDef="let vehicles">
-     <button class="button-al" mat-flat-button color="primary" (click)="update(vehicles.idVeiculo)" >Editar</button>
+     <button class="button-al" mat-flat-button color="primary" (click)="getVehicle(vehicles.idVeiculo)" >Editar</button>
      <button mat-flat-button color="warn" (click)="delete(vehicles.idVeiculo)">Excluir</button>
   </td>
   </ng-container>

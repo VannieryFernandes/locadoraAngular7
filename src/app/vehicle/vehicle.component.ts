@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RestService} from "../rest.service";
-import { FormGroup, FormControl } from '@angular/forms';
+import {MatDialog,  MatDialogRef,MAT_DIALOG_DATA} from '@angular/material';
+import { VehicleModalComponent } from '../vehicle-modal/vehicle-modal.component';
 
 
 @Component({
@@ -12,18 +13,15 @@ export class VehicleComponent implements OnInit {
 	vehicles: any; 
 	 displayedColumns: string[] = ['placa', 'cor', 'disponivel', 'ações'];
 	 dataSource:any;
+	 dados: any;
   	
-  		myGroup = new FormGroup({
-       placa: new FormControl(''),
-       cor: new FormControl(''),
-       disponivel: new FormControl()
-    });
 
-
-  constructor(public restService: RestService) { 
-  	
+  constructor(public restService: RestService,public dialog: MatDialog) { 
+  	    
   	
 		  	this.listar();
+
+        
 
 
 		  }	
@@ -34,7 +32,17 @@ export class VehicleComponent implements OnInit {
 
   }
 
-  
+  openDialog(){
+          const dialogRef = this.dialog.open(VehicleModalComponent, {
+            width: '300px',/*,
+            data: {name: this.name, animal: this.animal}*/
+          });
+
+          dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+            /*this.animal = result;*/
+          });
+        }
 
 
 
@@ -51,33 +59,31 @@ export class VehicleComponent implements OnInit {
   
   }
 
-  add(){
-  	this.restService.addData("veiculo",this.myGroup.value).subscribe((res:Response) => {
-  		this.listar();
-    });
-    
-  }
-  update(id){
-  	if (confirm('Atualizar Veiculo?')) {
-  	this.restService.getData("veiculo/"+id).subscribe((res:Response) => {
-  		
-	  	this.myGroup.setValue({
-	       placa: res.placa,
-	       cor: res.cor,
-	       disponivel: res.disponivel
-    	},{});
-    	this.restService.deleteData("veiculo/"+id).subscribe((res:Response) => {
-  		console.log("deu certo");
-  		this.listar();
-    
-  	
-    	});
-    });
 
- 
-  	
-    }
+  getVehicle(id){
+  	if (confirm('Atualizar Veiculo?')) {
+  	this.restService.getData("veiculo/"+id).subscribe(res => {
+  		this.dados = res;
+      this.updateDialog(this.dados);
+    	});
+    
+  	}
+    
   }
+  updateDialog(dado:any){
+      const dialogRef = this.dialog.open(VehicleModalComponent, {
+            width: '300px',
+            data: {dado}
+          });
+
+          dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+            /*this.animal = result;*/
+          });
+
+
+    }
+
 
   delete(id){
   	
@@ -94,13 +100,7 @@ export class VehicleComponent implements OnInit {
   }
   	
 
-    onSubmit(){
     
-    	this.add();
-    	this.myGroup.reset();
-    	
-    
-    }
     	
 
 }

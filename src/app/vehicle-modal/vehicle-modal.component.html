@@ -1,0 +1,31 @@
+<div class="container">
+		
+	  <form [formGroup]="myGroup" (ngSubmit)="onSubmit()">
+      <div>
+	    <label for="InputPlaca">Placa do veículo</label>
+
+	    <input type="text" class="form-control" id="placa" aria-describedby="placa" placeholder="Enter placa" formControlName="placa">
+	   
+	  
+	   	
+	  <label for="InputCor">Cor do veículo</label>
+
+	    <input type="text" class="form-control" id="cor" aria-describedby="cor" placeholder="Enter cor" formControlName="cor" >
+	   
+
+	  
+    <label for="exampleFormControlSelect1">Disponibilidade</label>
+    <select class="form-control" id="disponivel" formControlName="disponivel">
+      <option>1</option>
+      <option>0</option>
+     
+    </select>
+    <small>selecione 0 para disponivel e 1 para indisponivel</small>
+     
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+  <button (click)="update()" class="btn btn-primary">Atualizar</button>
+  
+</form>
+</div>
+	 
